@@ -36,13 +36,8 @@ const DivContainer1 = styled(DivContainer)`
   > .div2 {
     display: flex;
     flex-direction: column;
-    font-size: 20px;
+    font-size: 30px;
 
-    > img {
-    width: 219.65px;
-    height: 198.59px;
-    padding-bottom: 20px;
-    }
   }
 `;
 
