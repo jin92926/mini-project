@@ -55,7 +55,7 @@ function Main(props) {
       {
         showmodal === true
         ?
-        <Modal title={props.title[0]} src={props.src[0]} vanish={props.vanish}/>
+        <Modal title={props.title[0]} vanish={props.vanish}/>
         :
         <Background1>
           <DivContainer123>

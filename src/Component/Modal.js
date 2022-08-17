@@ -31,26 +31,6 @@ const DivContainer = styled.div`
   }
 `;
 
-const ContentContainer = styled.div`
-
-  display: flex;
-  flex-direction: column;
-  font-size: 70px;
-  padding-left: 70px;
-  padding-bottom: 200px;
-
-  > .div2 {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-
-    > img {
-      width: 51.19px;
-      height: 44.32px;
-    }
-  }
-`;
-
 const DivContainer1 = styled(DivContainer)`
 
   > .div2 {

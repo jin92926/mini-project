@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import Nav from "../../Component/Nav";
 
 import {
-  doc,
   collection,
   onSnapshot,
   query,
   orderBy,
-  deleteDoc
 } from "firebase/firestore";
 import { dbService } from "../../firebase";
 import HappyList from "./HappyList";
@@ -56,13 +54,6 @@ align-items: center;
 const Find = () => {
   const [savedHappy, setSavedHappy] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const openModalHandler = (event) => {
-    setIsOpen(!isOpen);
-  };
-  const deleteList = async (id) => {
-    const listDoc = doc(dbService, "daily", id);
-    await deleteDoc(listDoc);
-}
 
   useEffect(() => {
     const q = query(collection(dbService, "daily"), orderBy("날짜", "desc"));

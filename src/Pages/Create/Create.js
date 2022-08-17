@@ -25,10 +25,6 @@ const DivContainer = styled.div`
   justify-content: space-between;
 `;
 
-const Formcontainer = styled.div`
-  display: flex;
-
-`;
 
 function Create() {
   return (

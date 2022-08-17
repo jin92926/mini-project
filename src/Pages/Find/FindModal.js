@@ -5,31 +5,29 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
-import { dbService } from "../firebase"
+import { dbService } from "../../firebase"
 import styled from "styled-components";
 
 const Background = styled.div`
-
-  background: rgba(255, 255, 255, 0.1);
-  flex-grow: 1;
+  width: 359px;
+  height: 451px;
+  background: #FFFFFF4D;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
   border-radius: 10px;
- 
+
 `;
 
 
 const DivContainer = styled.div`
 
-  width: 371px;
-  height: 540px;
-  background: rgba(255, 255, 255, 0.1);
+  height: 420px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-
+  justify-content: space-between;
 
 `;
 
@@ -39,9 +37,8 @@ const RandomHappyTitle = styled.div`
   justify-content: center;
   width: 299px;
   height: 61px;
-  background-color:#181718;
+  background-color: #6592EC66;
   border-radius: 10px;
-  color: white;
 `;
 
 const RandomHappyListTwo = styled.div`
@@ -50,7 +47,7 @@ const RandomHappyListTwo = styled.div`
   width: 299px;
   height: 22px;
   > span {
-    background: #181718;
+    background: rgba(101, 146, 236, 0.43);
     border-radius: 20px;
     width: 132px;
     height: 22px;
@@ -58,6 +55,13 @@ const RandomHappyListTwo = styled.div`
     align-items: center;
     justify-content: center;
   }
+
+`;
+
+const RandomHappyImg = styled.img`
+  width: 299px;
+  height: 137px;
+  border-radius: 10px;
 
 `;
 
@@ -69,9 +73,9 @@ const RandomHappyContent = styled.div`
   align-items: center;
   width: 299px;
   height: 128px;
-  background: #181718;
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
-
+  color: black;
 `;
 
 const ButtonDiv = styled.div`
@@ -90,16 +94,10 @@ background-color:transparent;
 border: 0;
 outline: 0;
 color: white;
-width: 299px;
-  height: 64px;
-  border-radius: 10px;
-  background-color: red;
-  border: 0;
-  padding: 0;
 `;
 
 
-function DetailModal({ isOpen , deleteList}) {
+function FindModal({ isOpen , deleteList}) {
   const [savedHappy, setSavedHappy] = useState([]);
 
   useEffect(() => {
@@ -112,8 +110,15 @@ function DetailModal({ isOpen , deleteList}) {
       setSavedHappy(happyArr);
     });
   }, []);
+  // console.log(savedHappy)
+
+  
+  // savedHappy.map(el => console.log(el.id))
+
+
 
   const randomHappy = savedHappy[Math.floor(Math.random() * savedHappy.length)];
+ 
   return (
     <>
       {isOpen ? (
@@ -124,15 +129,16 @@ function DetailModal({ isOpen , deleteList}) {
               <span className="list__createdAt">{randomHappy.날짜.toDate().toLocaleString().slice(0,11)}</span>
               <span className="list__content">{randomHappy.날씨}</span>
             </RandomHappyListTwo>
+            {randomHappy.url && <RandomHappyImg src={randomHappy.url} />}
             <RandomHappyContent>{randomHappy.내용}</RandomHappyContent>
             <ButtonDiv>
-              <ButtonCss onClick={()=> {deleteList(randomHappy.id)}}>삭제하기</ButtonCss>
+              <ButtonCss onClick={()=>{}}>삭제하기</ButtonCss>
             </ButtonDiv>
           </DivContainer>
         </Background>
-      ) : null}
+       ) : null}
     </>
   );
 }
 
-export default DetailModal;
+export default FindModal;
